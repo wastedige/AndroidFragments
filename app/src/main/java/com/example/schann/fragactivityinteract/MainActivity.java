@@ -31,11 +31,13 @@ public class MainActivity extends AppCompatActivity implements MainActivityFragm
                         .setAction("Action", null).show();
             }
         });
+        MainActivityFragment fragInstance = (MainActivityFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
+        fragInstance.ChangeTxtViewOnFrag("Frag function called from Main activity's Oncreate.");
     }
 
     @Override
     public void onArticleSelected(int length) {
-        textViewMain.setText( "String length is now " + length );
+        textViewMain.setText( "String length on Frag is now " + length );
         Log.d("LENGTH", "String length is now " + length );
     }
 

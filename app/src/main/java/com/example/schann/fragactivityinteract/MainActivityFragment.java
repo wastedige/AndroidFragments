@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -20,6 +22,7 @@ public class MainActivityFragment extends Fragment {
 
     OnHeadlineSelectedListener mCallback;
     EditText txt;
+    TextView txtView;
 
     public interface OnHeadlineSelectedListener {
         public void onArticleSelected(int length);
@@ -30,12 +33,18 @@ public class MainActivityFragment extends Fragment {
 
     }
 
+    public void ChangeTxtViewOnFrag(String newValue) {
+        txtView.setText(newValue);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
         txt = (EditText) v.findViewById(R.id.editText);
+        txtView = (TextView) v.findViewById(R.id.textView);
+
         txt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
