@@ -9,8 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements MainActivityFragment.OnHeadlineSelectedListener {
+
+    TextView textViewMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityFragm
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        textViewMain = (TextView) findViewById(R.id.textViewMain);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,7 +35,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityFragm
 
     @Override
     public void onArticleSelected(int length) {
-      Log.d("LENGTH", "String length is now " + length );
+        textViewMain.setText( "String length is now " + length );
+        Log.d("LENGTH", "String length is now " + length );
     }
 
     @Override
