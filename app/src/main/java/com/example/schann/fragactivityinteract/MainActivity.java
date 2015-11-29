@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityFragm
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         textViewMain = (TextView) findViewById(R.id.textViewMain);
@@ -31,8 +31,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityFragm
                         .setAction("Action", null).show();
             }
         });
-        MainActivityFragment fragInstance = (MainActivityFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
-        fragInstance.ChangeTxtViewOnFrag("Frag function called from Main activity's Oncreate.");
+
+        if (findViewById(R.id.empty) != null) {
+            if (savedInstanceState != null) {
+                return;
+            }
+
+        }
+
+        MainActivityFragment fragInstance = new MainActivityFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.empty, fragInstance).commit();
+
+        //MainActivityFragment fragInstance = (MainActivityFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
+        //fragInstance.ChangeTxtViewOnFrag("Frag function called from Main activity's Oncreate.");
     }
 
     @Override
